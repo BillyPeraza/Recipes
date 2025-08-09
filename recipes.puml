@@ -1,0 +1,27 @@
+@startuml Recipes
+title Recipes
+
+!theme reddress-darkblue
+
+' Define the main components (recipes)
+' We'll use a component style for a clean look
+component "Sofrito" as sofrito
+component "Beans" as beans
+component "Black Beans" as blackbeans
+component "Frijoles Liquados" as frijoles
+component "Gallo Pinto" as gallo_pinto
+
+' Define the relationships between the recipes
+' Sofrito and Beans combine to make Frijoles Liquados
+sofrito --> frijoles : "Combine"
+beans --> frijoles : "Combine"
+
+' Sofrito and Black Beans combine to make Gallo Pinto
+sofrito --> gallo_pinto : "Combine"
+blackbeans --> gallo_pinto : "Combine"
+
+' The user requested a specific relationship between Beans and Black Beans
+' This shows that Black Beans is a specific type of Beans
+beans --> blackbeans : "type"
+
+@enduml

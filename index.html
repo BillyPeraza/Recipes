@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="forest">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lat-eh-know Recipes</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #292f49 0%, #236987 100%);
+      }
+      .recipe-card {
+        transition: all 0.3s ease;
+      }
+      .recipe-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .toc-link {
+        transition: all 0.2s ease;
+      }
+      .toc-link:hover {
+        transform: translateX(5px);
+      }
+      .flow-diagram {
+        background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+        border-radius: 10px;
+        padding: 1rem;
+        overflow-x: auto;
+      }
+      .interactive-recipe-diagram {
+        max-width: 100%;
+        height: auto;
+        min-height: 200px;
+      }
+      @media (max-width: 768px) {
+        .flow-diagram {
+          padding: 0.5rem;
+        }
+        .interactive-recipe-diagram {
+          min-height: 150px;
+        }
+        .hero-content h1 {
+          font-size: 2.5rem !important;
+        }
+        .card-title {
+          font-size: 1.75rem !important;
+        }
+        .card-actions {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0.5rem;
+        }
+        .card-actions .badge {
+          text-align: center;
+        }
+      }
+      @media (max-width: 480px) {
+        .hero-content h1 {
+          font-size: 2rem !important;
+        }
+        .card-title {
+          font-size: 1.5rem !important;
+        }
+        .flow-diagram {
+          padding: 0.25rem;
+        }
+        .interactive-recipe-diagram {
+          min-height: 120px;
+        }
+        .toc-link {
+          padding: 0.75rem !important;
+        }
+        .card-body {
+          padding: 1rem !important;
+        }
+        .space-y-16 > * + * {
+          margin-top: 2rem !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-base-200">
+    <div class="navbar bg-base-100 shadow-lg">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
+          </div>
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            <li><a href="#toc">Table of Contents</a></li>
+            <li><a href="#flow-diagram">Recipe Flow</a></li>
+            <li><a href="#sofrito">Sofrito</a></li>
+            <li><a href="#beans">Beans</a></li>
+            <li><a href="#black-beans">Black Beans</a></li>
+            <li><a href="#frijoles-liquados">Frijoles Liquados</a></li>
+            <li><a href="#gallo-pinto">Gallo Pinto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="#toc">Contents</a></li>
+          <li><a href="#flow-diagram">Flow</a></li>
+          <li><a href="#recipes">Recipes</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hero gradient-bg min-h-[50vh] md:min-h-[60vh] flex items-center justify-center">
+      <div class="hero-content text-center text-neutral-content">
+        <div class="max-w-md px-4">
+          <p class="mb-5 text-sm md:text-base">Americanized & Optimized</p>
+          <h1 class="mb-5 text-3xl md:text-5xl font-bold">Lat-eh-know Recipes</h1>
+          <button class="btn btn-primary btn-sm md:btn-md" onclick="document.getElementById('toc').scrollIntoView({behavior: 'smooth'})">Explore Recipes</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6 py-4 md:py-8">
+      <div id="toc" class="mb-16">
+        <div class="card bg-base-100 shadow-xl">
+          <div class="card-body">
+            <h2 class="card-title text-3xl mb-6 flex items-center">
+              <svg class="w-8 h-8 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                ></path>
+              </svg>
+              Table of Contents
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <div class="space-y-2">
+                <a href="#flow-diagram" class="toc-link block p-3 bg-base-200 rounded-lg hover:bg-primary hover:text-primary-content transition-all">
+                  <div class="flex items-center">
+                    <span class="badge badge-primary mr-3">0</span>
+                    <span class="font-semibold">Recipe Flow Diagram</span>
+                  </div>
+                </a>
+                <a href="#sofrito" class="toc-link block p-3 bg-base-200 rounded-lg hover:bg-primary hover:text-primary-content transition-all">
+                  <div class="flex items-center">
+                    <span class="badge badge-secondary mr-3">1</span>
+                    <span class="font-semibold">Sofrito</span>
+                  </div>
+                </a>
+                <a href="#beans" class="toc-link block p-3 bg-base-200 rounded-lg hover:bg-primary hover:text-primary-content transition-all">
+                  <div class="flex items-center">
+                    <span class="badge badge-secondary mr-3">2</span>
+                    <span class="font-semibold">Beans</span>
+                  </div>
+                </a>
+              </div>
+              <div class="space-y-2">
+                <a href="#black-beans" class="toc-link block p-3 bg-base-200 rounded-lg hover:bg-primary hover:text-primary-content transition-all">
+                  <div class="flex items-center">
+                    <span class="badge badge-secondary mr-3">3</span>
+                    <span class="font-semibold">Black Beans</span>
+                  </div>
+                </a>
+                <a
+                  href="#frijoles-liquados"
+                  class="toc-link block p-3 bg-base-200 rounded-lg hover:bg-primary hover:text-primary-content transition-all"
+                >
+                  <div class="flex items-center">
+                    <span class="badge badge-secondary mr-3">4</span>
+                    <span class="font-semibold">Frijoles Liquados</span>
+                  </div>
+                </a>
+                <a href="#gallo-pinto" class="toc-link block p-3 bg-base-200 rounded-lg hover:bg-primary hover:text-primary-content transition-all">
+                  <div class="flex items-center">
+                    <span class="badge badge-secondary mr-3">5</span>
+                    <span class="font-semibold">Gallo Pinto</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="flow-diagram" class="mb-16">
+        <div class="card bg-base-100 shadow-xl">
+          <div class="card-body">
+            <h2 class="card-title text-3xl mb-6 flex items-center">
+              <svg class="w-8 h-8 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                ></path>
+              </svg>
+              Recipe Flow Diagram
+            </h2>
+            <div class="flow-diagram m-auto text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                contentStyleType="text/css"
+                data-diagram-type="DESCRIPTION"
+                preserveAspectRatio="xMidYMid meet"
+                style="width: 100%; max-width: 500px; height: auto; background: #777777"
+                version="1.1"
+                viewBox="0 0 392 330"
+                zoomAndPan="magnify"
+                class="interactive-recipe-diagram"
+              >
+                <title>Recipes</title>
+                <defs />
+                <g>
+                  <rect fill="#777777" height="330" style="stroke: none; stroke-width: 1" width="392" x="0" y="0" />
+                  <g class="title" data-source-line="1">
+                    <text
+                      fill="#000000"
+                      font-family="sans-serif"
+                      font-size="14"
+                      font-weight="bold"
+                      lengthAdjust="spacing"
+                      textLength="53.6963"
+                      x="162.4849"
+                      y="24.5332"
+                    >
+                      Recipes
+                    </text>
+                  </g>
+
+                  <!--entity sofrito-->
+                  <g
+                    class="entity recipe-node"
+                    data-entity="sofrito"
+                    data-recipe="sofrito"
+                    data-source-line="7"
+                    data-uid="ent0002"
+                    id="entity_sofrito"
+                    style="cursor: pointer"
+                  >
+                    <rect
+                      fill="#2E2E2E"
+                      height="43.3687"
+                      rx="2.5"
+                      ry="2.5"
+                      style="stroke: #1b1b1b; stroke-width: 0.5"
+                      width="76.7866"
+                      x="45"
+                      y="45.6094"
+                    />
+                    <rect fill="#2E2E2E" height="10" style="stroke: #1b1b1b; stroke-width: 0.5" width="15" x="101.7866" y="50.6094" />
+                    <rect fill="#2E2E2E" height="2" style="stroke: #1b1b1b; stroke-width: 0.5" width="4" x="99.7866" y="52.6094" />
+                    <rect fill="#2E2E2E" height="2" style="stroke: #1b1b1b; stroke-width: 0.5" width="4" x="99.7866" y="56.6094" />
+                    <text fill="#FFFFFF" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="36.7866" x="60" y="76.6685">
+                      Sofrito
+                    </text>
+                  </g>
+
+                  <!--entity beans-->
+                  <g
+                    class="entity recipe-node"
+                    data-entity="beans"
+                    data-recipe="beans"
+                    data-source-line="8"
+                    data-uid="ent0003"
+                    id="entity_beans"
+                    style="cursor: pointer"
+                  >
+                    <rect
+                      fill="#2E2E2E"
+                      height="43.3687"
+                      rx="2.5"
+                      ry="2.5"
+                      style="stroke: #1b1b1b; stroke-width: 0.5"
+                      width="73.3921"
+                      x="177"
+                      y="45.6094"
+                    />
+                    <rect fill="#2E2E2E" height="10" style="stroke: #1b1b1b; stroke-width: 0.5" width="15" x="230.3921" y="50.6094" />
+                    <rect fill="#2E2E2E" height="2" style="stroke: #1b1b1b; stroke-width: 0.5" width="4" x="228.3921" y="52.6094" />
+                    <rect fill="#2E2E2E" height="2" style="stroke: #1b1b1b; stroke-width: 0.5" width="4" x="228.3921" y="56.6094" />
+                    <text fill="#FFFFFF" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="33.3921" x="192" y="76.6685">
+                      Beans
+                    </text>
+                  </g>
+
+                  <!--entity blackbeans-->
+                  <g
+                    class="entity recipe-node"
+                    data-entity="blackbeans"
+                    data-recipe="black-beans"
+                    data-source-line="9"
+                    data-uid="ent0004"
+                    id="entity_blackbeans"
+                    style="cursor: pointer"
+                  >
+                    <rect
+                      fill="#2E2E2E"
+                      height="43.3687"
+                      rx="2.5"
+                      ry="2.5"
+                      style="stroke: #1b1b1b; stroke-width: 0.5"
+                      width="106.666"
+                      x="280"
+                      y="163.6094"
+                    />
+                    <rect fill="#2E2E2E" height="10" style="stroke: #1b1b1b; stroke-width: 0.5" width="15" x="366.666" y="168.6094" />
+                    <rect fill="#2E2E2E" height="2" style="stroke: #1b1b1b; stroke-width: 0.5" width="4" x="364.666" y="170.6094" />
+                    <rect fill="#2E2E2E" height="2" style="stroke: #1b1b1b; stroke-width: 0.5" width="4" x="364.666" y="174.6094" />
+                    <text fill="#FFFFFF" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="66.666" x="295" y="194.6685">
+                      Black Beans
+                    </text>
+                  </g>
+
+                  <!--entity frijoles-->
+                  <g
+                    class="entity recipe-node"
+                    data-entity="frijoles"
+                    data-recipe="frijoles-liquados"
+                    data-source-line="10"
+                    data-uid="ent0005"
+                    id="entity_frijoles"
+                    style="cursor: pointer"
+                  >
+                    <rect
+                      fill="#2E2E2E"
+                      height="43.3687"
+                      rx="2.5"
+                      ry="2.5"
+                      style="stroke: #1b1b1b; stroke-width: 0.5"
+                      width="132.4902"
+                      x="112.5"
+                      y="163.6094"
+                    />
+                    <rect fill="#2E2E2E" height="10" style="stroke: #1b1b1b; stroke-width: 0.5" width="15" x="224.9902" y="168.6094" />
+                    <rect fill="#2E2E2E" height="2" style="stroke: #1b1b1b; stroke-width: 0.5" width="4" x="222.9902" y="170.6094" />
+                    <rect fill="#2E2E2E" height="2" style="stroke: #1b1b1b; stroke-width: 0.5" width="4" x="222.9902" y="174.6094" />
+                    <text fill="#FFFFFF" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="92.4902" x="127.5" y="194.6685">
+                      Frijoles Liquados
+                    </text>
+                  </g>
+
+                  <!--entity gallo_pinto-->
+                  <g
+                    class="entity recipe-node"
+                    data-entity="gallo_pinto"
+                    data-recipe="gallo-pinto"
+                    data-source-line="11"
+                    data-uid="ent0006"
+                    id="entity_gallo_pinto"
+                    style="cursor: pointer"
+                  >
+                    <rect
+                      fill="#2E2E2E"
+                      height="43.3687"
+                      rx="2.5"
+                      ry="2.5"
+                      style="stroke: #1b1b1b; stroke-width: 0.5"
+                      width="99.3398"
+                      x="7"
+                      y="281.6094"
+                    />
+                    <rect fill="#2E2E2E" height="10" style="stroke: #1b1b1b; stroke-width: 0.5" width="15" x="86.3398" y="286.6094" />
+                    <rect fill="#2E2E2E" height="2" style="stroke: #1b1b1b; stroke-width: 0.5" width="4" x="84.3398" y="288.6094" />
+                    <rect fill="#2E2E2E" height="2" style="stroke: #1b1b1b; stroke-width: 0.5" width="4" x="84.3398" y="292.6094" />
+                    <text fill="#FFFFFF" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="59.3398" x="22" y="312.6685">
+                      Gallo Pinto
+                    </text>
+                  </g>
+
+                  <!--link sofrito to frijoles-->
+                  <g class="link" data-entity-1="sofrito" data-entity-2="frijoles" data-source-line="15" data-uid="lnk7" id="link_sofrito_frijoles">
+                    <path
+                      d="M99.48,88.6094 C109.68,101.5994 123.24,118.6894 135.5,133.6094 C143.69,143.5694 149.0469,149.9224 156.8669,159.0524"
+                      fill="none"
+                      id="sofrito-to-frijoles"
+                      style="stroke: #ffffff; stroke-width: 1"
+                    />
+                    <polygon
+                      fill="#FFFFFF"
+                      points="160.77,163.6094,157.9533,154.1719,157.5174,159.8119,151.8774,159.376,160.77,163.6094"
+                      style="stroke: #ffffff; stroke-width: 1"
+                    />
+                    <text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="48.4419" x="136.5" y="130.6685">
+                      Combine
+                    </text>
+                  </g>
+
+                  <!--link beans to frijoles-->
+                  <g class="link" data-entity-1="beans" data-entity-2="frijoles" data-source-line="16" data-uid="lnk8" id="link_beans_frijoles">
+                    <path
+                      d="M207.24,88.8494 C200.87,109.9594 192.7828,136.7551 186.4328,157.8051"
+                      fill="none"
+                      id="beans-to-frijoles"
+                      style="stroke: #ffffff; stroke-width: 1"
+                    />
+                    <polygon
+                      fill="#FFFFFF"
+                      points="184.7,163.5494,191.1288,156.0881,186.144,158.7624,183.4697,153.7777,184.7,163.5494"
+                      style="stroke: #ffffff; stroke-width: 1"
+                    />
+                    <text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="48.4419" x="198.5" y="130.6685">
+                      Combine
+                    </text>
+                  </g>
+
+                  <!--link sofrito to gallo_pinto-->
+                  <g
+                    class="link"
+                    data-entity-1="sofrito"
+                    data-entity-2="gallo_pinto"
+                    data-source-line="19"
+                    data-uid="lnk9"
+                    id="link_sofrito_gallo_pinto"
+                  >
+                    <path
+                      d="M72.67,88.6594 C63.37,107.5394 50.67,136.6194 45.5,163.6094 C37.6,204.8294 44.2533,248.1346 50.1433,275.4046"
+                      fill="none"
+                      id="sofrito-to-gallo_pinto"
+                      style="stroke: #ffffff; stroke-width: 1"
+                    />
+                    <polygon
+                      fill="#FFFFFF"
+                      points="51.41,281.2694,53.4198,271.6278,50.3544,276.3821,45.6001,273.3167,51.41,281.2694"
+                      style="stroke: #ffffff; stroke-width: 1"
+                    />
+                    <text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="48.4419" x="46.5" y="189.6685">
+                      Combine
+                    </text>
+                  </g>
+
+                  <!--link blackbeans to gallo_pinto-->
+                  <g
+                    class="link"
+                    data-entity-1="blackbeans"
+                    data-entity-2="gallo_pinto"
+                    data-source-line="20"
+                    data-uid="lnk10"
+                    id="link_blackbeans_gallo_pinto"
+                  >
+                    <path
+                      d="M284.3,206.7094 C233.93,227.8094 161.6145,258.0921 111.2445,279.1821"
+                      fill="none"
+                      id="blackbeans-to-gallo_pinto"
+                      style="stroke: #ffffff; stroke-width: 1"
+                    />
+                    <polygon
+                      fill="#FFFFFF"
+                      points="105.71,281.4994,115.5565,281.7131,110.322,279.5683,112.4668,274.3338,105.71,281.4994"
+                      style="stroke: #ffffff; stroke-width: 1"
+                    />
+                    <text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="48.4419" x="212.5" y="248.6685">
+                      Combine
+                    </text>
+                  </g>
+
+                  <!--link beans to blackbeans-->
+                  <g class="link" data-entity-1="beans" data-entity-2="blackbeans" data-source-line="24" data-uid="lnk11" id="link_beans_blackbeans">
+                    <path
+                      d="M234.95,88.8494 C256.8,109.9594 286.1466,138.3287 307.9166,159.3787"
+                      fill="none"
+                      id="beans-to-blackbeans"
+                      style="stroke: #ffffff; stroke-width: 1"
+                    />
+                    <polygon
+                      fill="#FFFFFF"
+                      points="312.23,163.5494,308.5404,154.4177,308.6355,160.0738,302.9795,160.1689,312.23,163.5494"
+                      style="stroke: #ffffff; stroke-width: 1"
+                    />
+                    <text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="24.2505" x="281.5" y="130.6685">
+                      type
+                    </text>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="recipes" class="space-y-8 md:space-y-16">
+        <div id="sofrito" class="recipe-card card bg-base-100 shadow-xl">
+          <div class="card-body">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="card-title text-3xl">Sofrito</h2>
+              <div class="badge badge-primary">Base Recipe</div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    ></path>
+                  </svg>
+                  Ingredients
+                </h3>
+                <ul class="space-y-2">
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">2</span>
+                    <span>Bunches cilantro (stems included, chop off the very ends)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>Small red bell pepper</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>Small green bell pepper</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>Medium yellow onion</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>Head garlic (peeled)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">~½ cup</span>
+                    <span>Olive oil (estimate; use only as much as needed to help blend)</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                    ></path>
+                  </svg>
+                  Instructions
+                </h3>
+                <ol class="space-y-3">
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">1</span>
+                    <span
+                      >Prep vegetables: Roughly chop cilantro (stems included, just remove the very ends). Quarter the peppers and onion. Separate and
+                      peel the garlic cloves.</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">2</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Blend</div>
+                      Add all vegetables to a food processor or blender. Drizzle a small amount of olive oil in first — just enough to coat the blades
+                      or the bottom of the container. Blend until smooth (or, per your texture preference). Add more oil in small drizzles only if the
+                      machine struggles to process the mixture.</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">3</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Freeze</div>
+                      Pour the sofrito into ice cube trays and freeze until solid.</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">4</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Store</div>
+                      Transfer frozen cubes to a freezer-safe plastic bag. Use 1 cube at a time in recipes as needed.</span
+                    >
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div class="card-actions justify-end mt-6">
+              <div class="badge badge-outline">Prep Time: 20 min</div>
+              <div class="badge badge-outline">Freeze Time: 4+ hours</div>
+              <div class="badge badge-outline">Yield: ~24 ice cubes</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="beans" class="recipe-card card bg-base-100 shadow-xl">
+          <div class="card-body">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="card-title text-3xl">Beans</h2>
+              <div class="badge badge-primary">Base Recipe</div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    ></path>
+                  </svg>
+                  Ingredients
+                </h3>
+                <ul class="space-y-2">
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>(16 oz) bag dried beans (white, small red, black, or your choice)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>Packet Goya Sazón (or a cleaner alternative)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>Whole yellow onion, peeled and halved</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">½</span>
+                    <span>Head garlic, peeled</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>Bay leaf</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">-</span>
+                    <span>Dried parsley</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">-</span>
+                    <span>Dried oregano</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">-</span>
+                    <span>Ground cumin (optional; I like to include this for Black Beans)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">-</span>
+                    <span>Black pepper, to taste</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">-</span>
+                    <span>Red pepper flakes, to taste</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                    ></path>
+                  </svg>
+                  Instructions
+                </h3>
+                <ol class="space-y-3">
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">1</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Soak</div>
+                      Rinse beans well. Cover with water and soak overnight. Drain before cooking.</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">2</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Cook</div>
+                      Add beans to a large pot and cover with filtered water (about 2 inches above beans).</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">3</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Season</div>
+                      Add the Sazón packet, bay leaf,onion halves, garlic cloves, and spices. For parsley and oregano,
+                      lightly coat about 3/4 of the surface of the water with each seasoning… I have no idea how much that is - "let the ancestors
+                      speak to you".</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">4</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Simmer</div>
+                      Bring to a boil, then reduce to a gentle simmer. Cook until beans are tender, 1–2 hours depending on type. Add more water if
+                      needed during cooking.</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">5</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Remove</div>
+                      Once beans are cooked, discard the bay leaf and onion halves. and keep as much, or little, of the now delicious, dissolving
+                      garlic cloves.</span
+                    >
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div class="card-actions justify-end mt-6">
+              <div class="badge badge-outline">Soak Time: Overnight</div>
+              <div class="badge badge-outline">Cook Time: 1-2 hours</div>
+              <div class="badge badge-outline">Yield: ~6 cups</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="frijoles-liquados" class="recipe-card card bg-base-100 shadow-xl">
+          <div class="card-body">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="card-title text-3xl">Frijoles Licuados</h2>
+              <div class="badge badge-accent">Progressive</div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    ></path>
+                  </svg>
+                  Requires
+                </h3>
+                <ul class="space-y-2">
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>Sofrito from Step 1 (frozen cubes)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">-</span>
+                    <span>Beans from Step 2 (with cooking broth)</span>
+                  </li>
+                </ul>
+                <h3 class="text-xl font-semibold mb-4 mt-6 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    ></path>
+                  </svg>
+                  Additional Ingredient
+                </h3>
+                <ul class="space-y-2">
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">-</span>
+                    <span>Avocado oil (or other cooking oil of choice)</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                    ></path>
+                  </svg>
+                  Instructions
+                </h3>
+                <ol class="space-y-3">
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">1</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Blend</div>
+                      In a blender, combine cooked beans with enough of their cooking broth to create a smooth, pourable mixture.</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">2</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Cook</div>
+                      In a medium pot or skillet, heat a small amount of avocado oil over medium heat. Add 1 cube of the sofrito and cook, stirring
+                      occasionally, until fragrant.</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">3</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Mix</div>
+                      Pour the blended beans into the pot with the sofrito. Stir well to combine.</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">4</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Simmer</div>
+                      Cook over medium heat, stirring occasionally, until the mixture thickens slightly and flavors meld, about 5–10 minutes.</span
+                    >
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div class="card-actions justify-end mt-6">
+              <div class="badge badge-outline">Prep Time: 5 min</div>
+              <div class="badge badge-outline">Cook Time: 10 min</div>
+              <div class="badge badge-outline">Yield: ~4 cups</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="black-beans" class="recipe-card card bg-base-100 shadow-xl">
+          <div class="card-body">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="card-title text-3xl">Black Beans</h2>
+              <div class="badge badge-secondary">Progressive</div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    ></path>
+                  </svg>
+                  Requires
+                </h3>
+                <ul class="space-y-2">
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>Beans from Step 2 (black beans specifically)</span>
+                  </li>
+                </ul>
+                <h3 class="text-xl font-semibold mb-4 mt-6 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    ></path>
+                  </svg>
+                  Additional Ingredients
+                </h3>
+                <ul class="space-y-2">
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>Tablespoon ground cumin (recommended for black beans)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">-</span>
+                    <span>Extra garlic cloves (optional, for more flavor)</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                    ></path>
+                  </svg>
+                  Instructions
+                </h3>
+                <ol class="space-y-3">
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">1</span>
+                    <span>Follow the base Beans recipe, but use black beans specifically.</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">2</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Enhance</div>
+                      Add extra cumin during cooking for enhanced flavor profile.</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">3</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Serve</div>
+                      Black beans are perfect for rice dishes, soups, or as a side dish.</span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div class="card-actions justify-end mt-6">
+              <div class="badge badge-outline">Cook Time: 1-2 hours</div>
+              <div class="badge badge-outline">Yield: ~6 cups</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="gallo-pinto" class="recipe-card card bg-base-100 shadow-xl">
+          <div class="card-body">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="card-title text-3xl">Gallo Pinto</h2>
+              <div class="badge badge-accent">Progressive</div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    ></path>
+                  </svg>
+                  Requires
+                </h3>
+                <ul class="space-y-2">
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>Sofrito from Step 1 (frozen cubes)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>Black Beans from Step 3 (with cooking broth)</span>
+                  </li>
+                </ul>
+                <h3 class="text-xl font-semibold mb-4 mt-6 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    ></path>
+                  </svg>
+                  Additional Ingredients
+                </h3>
+                <ul class="space-y-2">
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">2</span>
+                    <span>cups cooked white rice (day-old rice works best)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">-</span>
+                    <span>Avocado oil (or other cooking oil)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">-</span>
+                    <span>Salt and pepper, to taste</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                    ></path>
+                  </svg>
+                  Instructions
+                </h3>
+                <ol class="space-y-3">
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">1</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Heat</div>
+                      In a large skillet, heat a small amount of avocado oil over medium heat.</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">2</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Sofrito</div>
+                      Add 1 cube of sofrito and cook until fragrant, about 2-3 minutes.</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">3</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Rice</div>
+                      Add the cooked rice to the skillet and stir to combine with the sofrito.</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">4</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Beans</div>
+                      Add the black beans with some of their cooking broth. Stir gently to combine.</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">5</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Simmer</div>
+                      Cook over medium heat, stirring occasionally, until the mixture is heated through and the rice has absorbed some of the bean broth, about 5-10 minutes.</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">6</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Season</div>
+                      Season with salt and pepper to taste. Serve hot.</span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div class="card-actions justify-end mt-6">
+              <div class="badge badge-outline">Prep Time: 10 min</div>
+              <div class="badge badge-outline">Cook Time: 15 min</div>
+              <div class="badge badge-outline">Yield: ~4 servings</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer footer-center p-10 bg-base-300 text-base-content">
+      <div>
+        <p>By Billy</p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+
+        const recipeNodes = document.querySelectorAll(".recipe-node");
+        recipeNodes.forEach((node) => {
+          node.addEventListener("click", function () {
+            const recipeId = this.getAttribute("data-recipe");
+            const targetElement = document.querySelector(`#${recipeId}`);
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+
+          node.addEventListener("mouseenter", function () {
+            if (window.innerWidth > 768) {
+              this.style.transform = "scale(1.03)";
+              this.style.transformOrigin = "center center";
+              this.style.transition = "transform 0.2s ease";
+              this.style.filter = "brightness(1.2)";
+              this.style.cursor = "pointer";
+            }
+          });
+
+          node.addEventListener("mouseleave", function () {
+            if (window.innerWidth > 768) {
+              this.style.transform = "scale(1)";
+              this.style.filter = "brightness(1)";
+              this.style.cursor = "default";
+            }
+          });
+
+          node.addEventListener("touchstart", function () {
+            this.style.transform = "scale(0.98)";
+            this.style.transition = "transform 0.1s ease";
+          });
+
+          node.addEventListener("touchend", function () {
+            this.style.transform = "scale(1)";
+          });
+        });
+
+        const linkElements = document.querySelectorAll(".link");
+        linkElements.forEach((link) => {
+          link.style.pointerEvents = "none";
+        });
+      });
+    </script>
+  </body>
+</html>
