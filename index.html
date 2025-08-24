@@ -6,6 +6,7 @@
     <title>Americanized & Optimized Lat-eh-know Recipes</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="navbar.js"></script>
     <style>
       .gradient-bg {
         background: linear-gradient(135deg, #292f49 0%, #236987 100%);
@@ -82,33 +83,7 @@
     </style>
   </head>
   <body class="min-h-screen bg-base-200">
-    <div class="navbar bg-base-100 shadow-lg">
-      <div class="navbar-start">
-        <div class="dropdown">
-          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-            </svg>
-          </div>
-          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-            <li><a href="#toc">Table of Contents</a></li>
-            <li><a href="#flow-diagram">Recipe Flow</a></li>
-            <li><a href="#sofrito">Sofrito</a></li>
-            <li><a href="#beans">Beans</a></li>
-            <li><a href="#black-beans">Black Beans</a></li>
-            <li><a href="#frijoles-liquados">Frijoles Liquados</a></li>
-            <li><a href="#gallo-pinto">Gallo Pinto</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1">
-          <li><a href="#toc">Contents</a></li>
-          <li><a href="#flow-diagram">Flow</a></li>
-          <li><a href="#recipes">Recipes</a></li>
-        </ul>
-      </div>
-    </div>
+    <div id="navbar-placeholder"></div>
 
     <div class="hero gradient-bg min-h-[50vh] md:min-h-[60vh] flex items-center justify-center">
       <div class="hero-content text-center text-neutral-content">
@@ -979,6 +954,8 @@
     </footer>
 
     <script>
+      createNavbar("family");
+
       document.addEventListener("DOMContentLoaded", function () {
         const links = document.querySelectorAll('a[href^="#"]');
         links.forEach((link) => {
