@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="forest">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meal Prep Recipes - Americanized & Optimized</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="navbar.js"></script>
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #292f49 0%, #236987 100%);
+      }
+      .recipe-card {
+        transition: all 0.3s ease;
+      }
+      .recipe-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .toc-link {
+        transition: all 0.2s ease;
+      }
+      .toc-link:hover {
+        transform: translateX(5px);
+      }
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 2.5rem !important;
+        }
+        .card-title {
+          font-size: 1.75rem !important;
+        }
+        .card-actions {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0.5rem;
+        }
+        .card-actions .badge {
+          text-align: center;
+        }
+      }
+      @media (max-width: 480px) {
+        .hero-content h1 {
+          font-size: 2rem !important;
+        }
+        .card-title {
+          font-size: 1.5rem !important;
+        }
+        .toc-link {
+          padding: 0.75rem !important;
+        }
+        .card-body {
+          padding: 1rem !important;
+        }
+        .space-y-16 > * + * {
+          margin-top: 2rem !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-base-200">
+    <div id="navbar-placeholder"></div>
+
+    <div class="hero gradient-bg min-h-[50vh] md:min-h-[60vh] flex items-center justify-center">
+      <div class="hero-content text-center text-neutral-content">
+        <div class="max-w-md px-4">
+          <p class="mb-5 text-sm md:text-base">Americanized & Optimized</p>
+          <h1 class="mb-5 text-3xl md:text-5xl font-bold">Meal Prep Recipes</h1>
+          <button class="btn btn-primary btn-sm md:btn-md" onclick="document.getElementById('toc').scrollIntoView({behavior: 'smooth'})">
+            Explore Recipes
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 md:px-6 py-4 md:py-8">
+      <div id="toc" class="mb-16">
+        <div class="card bg-base-100 shadow-xl">
+          <div class="card-body">
+            <h2 class="card-title text-3xl mb-6 flex items-center">
+              <svg class="w-8 h-8 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                ></path>
+              </svg>
+              Table of Contents
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <div class="space-y-2">
+                <a href="#spiced-chicken-thighs" class="toc-link block p-3 bg-base-200 rounded-lg hover:bg-primary hover:text-primary-content transition-all">
+                  <div class="flex items-center">
+                    <span class="badge badge-secondary mr-3">1</span>
+                    <span class="font-semibold">Spiced Chicken Thighs</span>
+                  </div>
+                </a>
+                <a href="#chicken-pesto-bake" class="toc-link block p-3 bg-base-200 rounded-lg hover:bg-primary hover:text-primary-content transition-all">
+                  <div class="flex items-center">
+                    <span class="badge badge-secondary mr-3">2</span>
+                    <span class="font-semibold">Chicken Pesto Bake</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="recipes" class="space-y-8 md:space-y-16">
+        <div id="spiced-chicken-thighs" class="recipe-card card bg-base-100 shadow-xl">
+          <div class="card-body">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="card-title text-3xl">Spiced Chicken Thighs</h2>
+              <div class="badge badge-accent">Meal Prep</div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    ></path>
+                  </svg>
+                  Spice Mix (5 Servings)
+                </h3>
+                <ul class="space-y-2">
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">2</span>
+                    <span>tablespoons chili powder</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">4</span>
+                    <span>teaspoons salt</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">2</span>
+                    <span>teaspoons pepper</span>
+                  </li>
+                </ul>
+                
+                <h3 class="text-xl font-semibold mb-4 mt-6 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    ></path>
+                  </svg>
+                  Main Ingredients
+                </h3>
+                <ul class="space-y-2">
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">4</span>
+                    <span>lbs boneless, skinless chicken thighs</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>tablespoon olive oil</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">3</span>
+                    <span>cups cooked rice</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">2</span>
+                    <span>cups bone broth (for cooking rice)</span>
+                  </li>
+                </ul>
+
+                <h3 class="text-xl font-semibold mb-4 mt-6 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    ></path>
+                  </svg>
+                  Vegetables
+                </h3>
+                <ul class="space-y-2">
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">4</span>
+                    <span>medium zucchini</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">16</span>
+                    <span>oz mushrooms</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>medium onion</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>large broccoli head</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>cup shredded cheddar cheese</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                    ></path>
+                  </svg>
+                  Instructions
+                </h3>
+                <ol class="space-y-3">
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">1</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Prep</div>
+                      Preheat oven to 400°F. Mix chili powder, salt, and pepper in a small bowl. Pat chicken thighs dry and rub with olive oil, then coat generously with spice mix.
+                    </span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">2</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Chicken</div>
+                      Place chicken thighs on a wire rack over a baking sheet. Bake for 25-30 minutes until internal temperature reaches 165°F.
+                    </span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">3</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Broiler</div>
+                      Switch oven to broil on high. Broil chicken for 3-5 minutes until crispy and golden brown. Watch closely to prevent burning. Let rest 10 minutes.
+                    </span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">4</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Rice</div>
+                      While chicken rests, cook 1.5 cups uncooked rice in 2 cups bone broth. Bring to boil, cover, reduce heat to low, cook 15 minutes. Remove from heat, let stand 5 minutes.
+                    </span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">5</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Veggies</div>
+                      Dice zucchini, mushrooms, onion, and broccoli into bite-sized pieces. Sauté in a large pan with olive oil over medium-high heat until tender and slightly browned, 8-10 minutes.
+                    </span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">6</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Dice</div>
+                      Dice chicken thighs into bite-sized pieces.
+                    </span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">7</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Portion</div>
+                      Divide rice, vegetables, diced chicken, and shredded cheese equally among 5 meal prep containers. Store refrigerated for up to 4 days or freeze for up to 3 months.
+                    </span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="card-actions justify-end mt-6">
+              <div class="badge badge-outline">Prep Time: 15 min</div>
+              <div class="badge badge-outline">Cook Time: 35 min</div>
+              <div class="badge badge-outline">Yield: 5 servings</div>
+              <div class="badge badge-outline">Storage: 4 days fridge / 3 months freezer</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="chicken-pesto-bake" class="recipe-card card bg-base-100 shadow-xl">
+          <div class="card-body">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="card-title text-3xl">Chicken Pesto Bake</h2>
+              <div class="badge badge-accent">Meal Prep</div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    ></path>
+                  </svg>
+                  Main Ingredients
+                </h3>
+                <ul class="space-y-2">
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1.25</span>
+                    <span>cups rice (any type)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">2.2</span>
+                    <span>lbs chicken breast (diced)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">3.5</span>
+                    <span>oz green pesto (120 cal per 1.7 oz)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">11.3</span>
+                    <span>oz low fat greek yogurt</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">5</span>
+                    <span>oz chopped spinach</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">1</span>
+                    <span>large red onion (finely diced)</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">2</span>
+                    <span>cups chicken stock</span>
+                  </li>
+                  <li class="flex items-center">
+                    <span class="badge badge-outline mr-2">5.3</span>
+                    <span>oz sundried tomatoes</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-4 flex items-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                    ></path>
+                  </svg>
+                  Instructions
+                </h3>
+                <ol class="space-y-3">
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">1</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Prep</div>
+                      Preheat oven to 360°F (180°C). Dice chicken breast into bite-sized pieces and finely dice the red onion.
+                    </span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">2</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Mix</div>
+                      In a large bowl, combine diced chicken, pesto, greek yogurt, chopped spinach, diced onion, and sundried tomatoes. Mix well to coat everything evenly.
+                    </span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">3</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Layer</div>
+                      Spread rice in the bottom of a 3-liter baking dish. Pour chicken stock over the rice. Top with the chicken and vegetable mixture.
+                    </span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">4</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Bake</div>
+                      Cover with aluminum foil and bake for 75-90 minutes until chicken is cooked through and rice is tender.
+                    </span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="badge badge-primary mr-3 mt-1">5</span>
+                    <span>
+                      <div class="badge badge-xs badge-warning">Rest</div>
+                      Remove from oven and let rest for 10 minutes before serving. Divide into 4-6 portions for meal prep.
+                    </span>
+                  </li>
+                </ol>
+
+                <div class="mt-6 p-4 bg-base-200 rounded-lg">
+                  <h4 class="font-semibold mb-2 flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                    Nutrition (per serving - 6 servings)
+                  </h4>
+                  <div class="grid grid-cols-2 gap-2 text-sm">
+                    <div class="flex justify-between">
+                      <span>Calories:</span>
+                      <span class="font-semibold">484</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Carbs:</span>
+                      <span class="font-semibold">47.2g</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Fat:</span>
+                      <span class="font-semibold">8.89g</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Protein:</span>
+                      <span class="font-semibold">51.4g</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-actions justify-end mt-6">
+              <div class="badge badge-outline">Prep Time: 15 min</div>
+              <div class="badge badge-outline">Cook Time: 75-90 min</div>
+              <div class="badge badge-outline">Yield: 4-6 servings</div>
+              <div class="badge badge-outline">Storage: 4 days fridge</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer footer-center p-10 bg-base-300 text-base-content">
+      <div>
+        <p>By Billy</p>
+      </div>
+    </footer>
+
+    <script>
+      createNavbar("meal-prep");
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+

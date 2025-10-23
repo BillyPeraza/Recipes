@@ -12,6 +12,7 @@ function createNavbar(activePage = "family") {
             <li><a href="index.html">Family</a></li>
             <li><a href="mexican.html">Mexican</a></li>
             <li><a href="italian.html">Italian</a></li>
+            <li><a href="meal-prep.html">Meal Prep</a></li>
           </ul>
         </div>
       </div>
@@ -19,7 +20,8 @@ function createNavbar(activePage = "family") {
         <ul class="menu menu-horizontal px-1">
           <li><a href="index.html" class="${activePage === "family" ? "font-bold" : ""}">Family</a></li>
           <li><a href="mexican.html" class="${activePage === "mexican" ? "font-bold" : ""}">Mexican</a></li>
-          <li><a href="italian.html" class="${activePage === "italian" ? "font-bold" : ""}">Italian</a></li>      
+          <li><a href="italian.html" class="${activePage === "italian" ? "font-bold" : ""}">Italian</a></li>
+          <li><a href="meal-prep.html" class="${activePage === "meal-prep" ? "font-bold" : ""}">Meal Prep</a></li>      
         </ul>
       </div>
       <div class="navbar-end"></div>
